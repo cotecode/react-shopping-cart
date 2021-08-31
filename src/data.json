@@ -14,7 +14,7 @@
       "image": "/images/dress2.jpg",
       "description": "description",
       "price": 80000,
-      "availableSizes": ["X", "M", "L"]
+      "availableSizes": ["XS", "M", "L"]
     },
     {
       "_id": "dress3",
