@@ -1,3 +1,4 @@
+<<<<<<< products-component
 import React, { useState } from "react";
 import Products from "./components/Products";
 import data from "./data.json";
@@ -7,6 +8,11 @@ const App = () => {
   const [size, setSize] = useState("");
   const [sort, setSort] = useState("");
 
+=======
+// feature 1
+
+function App() {
+>>>>>>> master
   return (
     <div className="grid-container">
       <header>
