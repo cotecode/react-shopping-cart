@@ -8,9 +8,6 @@ import data from "./data.json";
 import store from "./store";
 
 const App = () => {
-  const [products, setProducts] = useState(data.products);
-  const [size, setSize] = useState("");
-  const [sort, setSort] = useState("");
   const [cartItems, setCartItems] = useState(
     localStorage.getItem("cartItems")
       ? JSON.parse(localStorage.getItem("cartItems"))
@@ -18,57 +15,6 @@ const App = () => {
   );
 
   // console.log(products);
-
-  const sortProducts = (e) => {
-    setSort(e.target.value);
-  };
-
-  const filterProducts = (e) => {
-    setSize(e.target.value);
-    // if (e.target.value === "") {
-    //   setSize(e.target.value);
-    //   setProducts(data.products);
-    // } else {
-    //   setSize(e.target.value);
-    //   setProducts(
-    //     data.products.filter(
-    //       (product) => product.availableSizes.indexOf(e.target.value) >= 0
-    //     )
-    //   );
-    // }
-  };
-
-  // Filtered size
-  useEffect(() => {
-    setProducts(
-      size === ""
-        ? data.products
-        : data.products.filter(
-            (product) => product.availableSizes.indexOf(size) >= 0
-          )
-    );
-  }, [size]);
-
-  // Filtered price
-  useEffect(() => {
-    setProducts(
-      products
-        .slice()
-        .sort((a, b) =>
-          sort === "lowest"
-            ? a.price > b.price
-              ? 1
-              : -1
-            : sort === "highest"
-            ? a.price < b.price
-              ? 1
-              : -1
-            : a._id > b._id
-            ? 1
-            : -1
-        )
-    );
-  }, [sort]);
 
   // add Cart
   const addToCart = (product) => {
@@ -110,14 +56,8 @@ const App = () => {
         <main>
           <div className="content">
             <div className="main">
-              <Filter
-                count={products.length}
-                size={size}
-                sort={sort}
-                filterProducts={filterProducts}
-                sortProducts={sortProducts}
-              />
-              <Products products={products} addToCart={addToCart} />
+              <Filter />
+              <Products addToCart={addToCart} />
             </div>
             <div className="sidebar">
               <Cart
