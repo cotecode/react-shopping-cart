@@ -12,7 +12,7 @@ mongoose.connect("mongodb://localhost/react-shopping-cart-db", {
 });
 
 const Product = mongoose.model(
-  "products",
+  "products", 
   new mongoose.Schema({
     _id: { type: String, default: shortid.generate },
     title: String,
